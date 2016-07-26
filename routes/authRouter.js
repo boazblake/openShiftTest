@@ -44,9 +44,9 @@ authRouter
     if (req.user) {
       console.log(req.user)
       var email = req.user.email
-      res.json({
-        msg: `user <${email}> logged out`
-      })
+      // res.json({
+      //   msg: `user <${email}> logged out`
+      // })
       req.logout()
       checkAuth(req, res, function(){res.redirect('/auth/dashboard')})
     }
