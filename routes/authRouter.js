@@ -1,4 +1,4 @@
- let Router = require('express').Router;
+let Router = require('express').Router;
 let passport = require ('passport')
 let User = require('../db/schema.js').User
 let checkAuth = require('../config/middleware.js').checkAuth
@@ -10,7 +10,7 @@ const authRouter = Router()
 authRouter
   .post('/register', function(req, res){
     // passport appends json-data to request.body
-    // console.log(req.body)
+    console.log(req.body)
     let newUser = new User(req.body)
 
     User.find({email: req.body.email}, function(err, results){
@@ -37,22 +37,25 @@ authRouter
   .post('/login', passport.authenticate('local'), function(req, res){
       let userCopy = req.user.toObject()
       delete userCopy.password
-      res.json(userCopy)         
+      console.log(userCopy)
+      checkAuth(req, res, function(req){res.redirect('/dashboard')})
   })
   .get('/logout', function (req, res) {
     if (req.user) {
-      // console.log(req.user)
-      let email = req.user.email
-      req.logout()
+      console.log(req.user)
+      var email = req.user.email
       res.json({
         msg: `user <${email}> logged out`
       })
+      req.logout()
+      checkAuth(req, res, function(){res.redirect('/auth/dashboard')})
     }
     else {
       res.json({
         msg: 'error: no current user'
       })
     }
+    checkAuth(req, res, function(){res.redirect('/auth/dashboard')})
   })
 
 

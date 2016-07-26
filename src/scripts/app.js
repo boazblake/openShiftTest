@@ -12,6 +12,9 @@ import Services from './views/services.js'
 import Information from './views/information.js'
 import Contact from './views/contact.js'
 
+
+import Dashboard from './views/dashboard.js'
+
 const app = function() {
   //SMOOTH SCROLLING EFFECT
 $(function() {
@@ -29,12 +32,12 @@ $(function() {
   });
 });
 
-
-
 class App extends React.Component {
   constructor(props) {
       super(props);
   }
+
+
 
   render(){
     return (
@@ -53,6 +56,7 @@ class App extends React.Component {
 	ReactDOM.render((
     <Router history={browserHistory}>
       <Route path='/' component={App} />
+      <Route path='/dashboard' component={Dashboard} message={'hi'}/>
     </Router>
     ),document.querySelector('.app'))
 }

@@ -1,6 +1,23 @@
 const checkAuth = function(req, res, next){
   if(!req.user) {
-    res.status(400).send( 'no authenticated user for current session' )
+    res.status(400).send( `
+      <head>
+        <meta charset="UTF-8">
+        <title>Please Login First</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+      </head>
+      <body>
+        <div class="container">
+          <div class="row">
+            <h1>UNAUTHORIZED USER</h1>
+            <h3>You will need to login first</h3>
+            <a class="button" href="/">Go home</a>
+            <a class="button" href="/register">Sign Up</a>
+            <a class="button" href="/login">Login</a>
+          </div>
+        </div>
+      </body>
+    `)
   }
   else next()
 }

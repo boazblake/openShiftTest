@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
   <title>Dashboard</title>
 </head>
 <body>
-  <h1>Welcome to teh Dashoboard!!</h1>
+  <h1>Welcome to your Dashboard!!</h1>
+
+  <div class="app"></div>
+  <!-- attach JavaScripts -->
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGdftRJTuawCeJm7hIbuo3d11knfevbrE"></script>
+  <script type="text/javascript" src="./js/app.js"></script>
+  <script type="text/javascript">
+    function initMap() {
+      var latlng = new google.maps.LatLng(-34.397, 150.644);
+      var myOptions = {
+          zoom: 8,
+          center: latlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("map_canvas"),
+              myOptions);
+    }
+    google.maps.event.addDomListener(window, "load", initMap);
+  </script>
 </body>
 </html>
+
+

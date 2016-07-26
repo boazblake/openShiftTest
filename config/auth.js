@@ -16,7 +16,7 @@ module.exports = function(UserModel){
           done(null , false, {message: "no user exists with that email"})   
         } else if(results.password !== inputPW) {
           //will trigger failure callback
-          done(null, false, {message: "bad password"} )      
+          done(null, false, {message: "invalid password"} )      
         } else {
           done(null, results); 
           //calls req.login(results)

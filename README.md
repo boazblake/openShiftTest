@@ -64,4 +64,3 @@ The easiest thing to do is deploy to heroku. Once you have an account and you've
   - `git push heroku master`
 
 Have fun!
-# openShiftTest
